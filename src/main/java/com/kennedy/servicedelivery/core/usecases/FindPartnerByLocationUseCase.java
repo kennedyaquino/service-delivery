@@ -1,6 +1,6 @@
 package com.kennedy.servicedelivery.core.usecases;
 
-import com.kennedy.servicedelivery.core.entities.Partner;
+import com.kennedy.servicedelivery.core.models.Partner;
 
 public interface FindPartnerByLocationUseCase {
 

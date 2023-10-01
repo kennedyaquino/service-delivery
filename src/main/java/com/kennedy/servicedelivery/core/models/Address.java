@@ -1,13 +1,14 @@
-package com.kennedy.servicedelivery.core.entities;
+package com.kennedy.servicedelivery.core.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoverageArea {
-    private String type;
-    private final List<List<List<List<Double>>>> coordinates = new ArrayList<>();
+public class Address {
 
-    public CoverageArea() {
+    private String type;
+    private final List<Double> coordinates = new ArrayList<>();
+
+    public Address() {
     }
 
     public String getType() {
@@ -18,7 +19,7 @@ public class CoverageArea {
         this.type = type;
     }
 
-    public List<List<List<List<Double>>>> getCoordinates() {
+    public List<Double> getCoordinates() {
         return coordinates;
     }
 }
