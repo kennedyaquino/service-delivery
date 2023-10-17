@@ -17,6 +17,15 @@ public class Partner {
     public Partner() {
     }
 
+    public Partner(String id, String tradingName, String ownerName, String document, CoverageArea coverageArea, Address address) {
+        this.id = id;
+        this.tradingName = tradingName;
+        this.ownerName = ownerName;
+        this.document = document;
+        this.coverageArea = coverageArea;
+        this.address = address;
+    }
+
     public Partner(PartnerFormRequest form) {
         this.id = UUID.randomUUID().toString();
         this.tradingName = form.tradingName();

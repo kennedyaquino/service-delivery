@@ -10,6 +10,7 @@ public class CoverageArea {
     public CoverageArea() {
     }
 
+
     public String getType() {
         return type;
     }
