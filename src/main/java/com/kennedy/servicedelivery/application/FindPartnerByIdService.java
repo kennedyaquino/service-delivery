@@ -6,9 +6,10 @@ import com.kennedy.servicedelivery.core.models.CoverageArea;
 import com.kennedy.servicedelivery.core.models.Partner;
 import com.kennedy.servicedelivery.core.usecases.FindPartnerByIdUseCase;
 import com.kennedy.servicedelivery.core.utils.Util;
-import com.kennedy.servicedelivery.db.entities.PartnerEntity;
 import com.kennedy.servicedelivery.db.repositories.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Arrays;
 
 public class FindPartnerByIdService implements FindPartnerByIdUseCase {
 
@@ -22,7 +23,7 @@ public class FindPartnerByIdService implements FindPartnerByIdUseCase {
     @Override
     public Partner findById(String id) {
 
-        PartnerEntity entity = repository.findById(id).orElseThrow(() -> new NotFoundException("not found " + id));
+        var entity = repository.findById(id).orElseThrow(() -> new NotFoundException("not found " + id));
 
         CoverageArea coverageArea = new CoverageArea();
         coverageArea.setType(entity.getTypeCoverageArea());
@@ -30,9 +31,9 @@ public class FindPartnerByIdService implements FindPartnerByIdUseCase {
 
         Address address = new Address();
         address.setType(entity.getTypeAddress());
-        address.getCoordinates().addAll(Util.convertDataCoordinatesAddressStringAsDouble(entity.getCoordinatesAddress()));
+        address.getCoordinates().addAll(Arrays.asList(entity.getLongitude(), entity.getLatitude()));
 
-        Partner partner = new Partner(
+       return new Partner(
                 entity.getId(),
                 entity.getTradingName(),
                 entity.getOwnerName(),
@@ -40,7 +41,5 @@ public class FindPartnerByIdService implements FindPartnerByIdUseCase {
                 coverageArea,
                 address
         );
-
-        return partner;
     }
 }

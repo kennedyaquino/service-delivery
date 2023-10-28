@@ -16,9 +16,10 @@ public class PartnerEntity {
     private String typeCoverageArea;
     private String coordinatesCoverageArea;
     private String typeAddress;
-    private String coordinatesAddress;
+    private double longitude;
+    private double latitude;
 
-    public PartnerEntity(String id, String tradingName, String ownerName, String document, String typeCoverageArea, String coordinatesCoverageArea, String typeAddress, String coordinatesAddress) {
+    public PartnerEntity(String id, String tradingName, String ownerName, String document, String typeCoverageArea, String coordinatesCoverageArea, String typeAddress, double longitude, double latitude) {
         this.id = id;
         this.tradingName = tradingName;
         this.ownerName = ownerName;
@@ -26,7 +27,8 @@ public class PartnerEntity {
         this.typeCoverageArea = typeCoverageArea;
         this.coordinatesCoverageArea = coordinatesCoverageArea;
         this.typeAddress = typeAddress;
-        this.coordinatesAddress = coordinatesAddress;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public String getId() {
@@ -85,11 +87,19 @@ public class PartnerEntity {
         this.typeAddress = typeAddress;
     }
 
-    public String getCoordinatesAddress() {
-        return coordinatesAddress;
+    public double getLongitude() {
+        return longitude;
     }
 
-    public void setCoordinatesAddress(String coordinatesAddress) {
-        this.coordinatesAddress = coordinatesAddress;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 }

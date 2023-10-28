@@ -23,20 +23,6 @@ public class Util {
         return stringBuilder.toString();
     }
 
-    public static String convertDataCoordinatesAddressAsString(List<Double> coordinates) {
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i = 0; i < coordinates.size(); i++) {
-            stringBuilder.append(coordinates.get(i));
-            if (i != (coordinates.size() - 1)) {
-                stringBuilder.append(";");
-            }
-        }
-
-        return stringBuilder.toString();
-    }
-
     public static List<List<List<List<Double>>>> convertDataCoordinatesCoverageAreaStringAsDouble(String coordinatesString) {
         String[] a = coordinatesString.split(";");
         List<Double> coordinates = new ArrayList<>();
@@ -51,14 +37,7 @@ public class Util {
         return List.of(List.of(List.of(coordinates)));
     }
 
-    public static List<Double> convertDataCoordinatesAddressStringAsDouble(String addressString) {
-        String[] a = addressString.split(";");
-        List<Double> coordinates = new ArrayList<>();
-
-        for (int i = 0; i < a.length; i++) {
-            coordinates.add(Double.parseDouble(a[i]));
-        }
-
-        return coordinates;
+    public static double calculateDistanceBetweenAddresses(double longA, double latA, double longB, double latB) {
+        return Math.sqrt(Math.pow((latB - latA), 2) + Math.pow((longB - longA), 2));
     }
 }

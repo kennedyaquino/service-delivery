@@ -21,7 +21,8 @@ public class CreatePartnerService implements CreatePartnerUseCase {
     public void createPartner(PartnerFormRequest form) {
         Partner partner = new Partner(form);
         String coordinatesCoverageArea = Util.convertDataCoordinatesCoverageAreaAsString(form.coverageArea().getCoordinates());
-        String coordinatesAddress = Util.convertDataCoordinatesAddressAsString(form.address().getCoordinates());
+        double longitude = partner.getAddress().getCoordinates().get(0);
+        double latitude = partner.getAddress().getCoordinates().get(1);
 
         repository.save(new PartnerEntity(
                 partner.getId(),
@@ -31,7 +32,8 @@ public class CreatePartnerService implements CreatePartnerUseCase {
                 partner.getCoverageArea().getType(),
                 coordinatesCoverageArea,
                 partner.getAddress().getType(),
-                coordinatesAddress
+                longitude,
+                latitude
         ));
     }
 
